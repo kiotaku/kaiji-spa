@@ -4,7 +4,7 @@ let fuse, isProduction;
 
 Sparky.task("build", () => {
     fuse = new FuseBox({
-        homeDir: "app/",
+        homeDir: "src/",
         sourceMaps: !isProduction,
         hash: isProduction,
         output: "build/$name.js",
@@ -13,7 +13,7 @@ Sparky.task("build", () => {
             CSSPlugin(),
             BabelPlugin(),
             WebIndexPlugin({
-                template: "app/index.html"
+                template: "src/index.html"
             }),
             isProduction && QuantumPlugin({
                 treeshake: true,
@@ -22,7 +22,7 @@ Sparky.task("build", () => {
         ]
     })
     fuse.bundle("vendor").instructions("~ index.jsx")
-    fuse.bundle("app").instructions("> [index.jsx]")
+    fuse.bundle("src").instructions("> [index.jsx]")
 });
 
 Sparky.task("default", ["clean", "build"], () => {
