@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build": "node fuse.js"
+    "build:js": "node fuse.js",
+    "build:proto": "protoc --plugin=protoc-gen-js_service=./node_modules/.bin/protoc-gen-js_service --js_out=import_style=commonjs,binary:./src/config/proto --js_service_out=./src/config/proto -I protoc protoc/*.proto"
   },
   "author": "",
   "license": "ISC",
@@ -13,9 +14,13 @@
     "babel-core": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "fuse-box": "^2.2.31"
+    "fuse-box": "^2.2.31",
+    "ts-protoc-gen": "^0.4.0"
   },
   "dependencies": {
+    "@types/google-protobuf": "^3.2.7",
+    "google-protobuf": "^3.4.0",
+    "grpc-web-client": "^0.3.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "react-router": "^4.2.0",
