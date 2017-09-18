@@ -4,16 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "node fuse.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "fuse-box": "^2.2.31",
     "babel-core": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-latest": "^6.24.1"
+    "babel-preset-latest": "^6.24.1",
+    "fuse-box": "^2.2.31"
   },
   "dependencies": {
+    "preact": "^8.2.5",
+    "preact-compat": "^3.17.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   }
 }
