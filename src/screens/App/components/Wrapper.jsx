@@ -24,7 +24,7 @@ export default class Wrapper extends Component {
     const { children } = this.props
     const items = [
       { path: '/resister_user', text: 'Resister User' },
-      { path: '/blackjack', text: 'Baccarat' },
+      { path: '/blackjack', text: 'Blackjack' },
       { path: '/poker', text: 'Poker' },
     ]
     return (
