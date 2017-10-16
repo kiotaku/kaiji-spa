@@ -3,7 +3,7 @@ import { BrowserRouter, Link, Route, Switch, withRouter } from 'react-router-dom
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AlertContainer from 'react-alert'
 
-// import Blackjack from './screens/Blackjack'
+import Blackjack from './screens/Blackjack'
 // import Poker from './screens/Poker'
 import ResisterUser from './screens/ResisterUser'
 // import Settings from './screens/Settings'
@@ -24,7 +24,7 @@ export default class App extends Component {
           <div>
             <AlertContainer ref={a => window.alert_msg = a} {...this.alertOptions}/>
             <Wrapper>
-              {/* { Blackjack } */}
+              <Route path='/blackjack' component={Blackjack}/>
               {/* { Poker } */}
               <ResisterUser />
               {/* { Settings } */}
