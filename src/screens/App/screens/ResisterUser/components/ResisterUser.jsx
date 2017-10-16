@@ -1,4 +1,5 @@
 import { h, Component } from 'preact'
+import KaijiApi from 'shared/utils/kaiji_api'
 
 export default class ResisterUser extends Component {
   constructor() {
@@ -11,6 +12,8 @@ export default class ResisterUser extends Component {
   }
 
   submit() {
+    const { id, name, isAnonymous } = this.state
+    KaijiApi.add_user(id, name, true, isAnonymous)
     this.setState({
       id: '',
       name: '',

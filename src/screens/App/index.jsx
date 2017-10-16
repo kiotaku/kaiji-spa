@@ -12,18 +12,17 @@ import Wrapper from './components/Wrapper'
 const Tmp = () => (<Link to='/resister_user'>resister user</Link>)
 
 export default class App extends Component {
-  var alertOptions = {
-    offset: 14,
-    position: 'bottom right',
-    theme: 'light',
-    time: 5000,
-    transition: 'fade'
-  }
-
   render() {
+    var alertOptions = {
+      offset: 14,
+      position: 'bottom right',
+      theme: 'light',
+      time: 5000,
+      transition: 'fade'
+    }
     return (
       <BrowserRouter>
-        <AlertContainer ref={a => wimdow.alert_msg = a}, {...this.alertOptions}/>
+        <AlertContainer ref={a => wimdow.alert_msg = a} {...this.alertOptions}/>
         <div className='app'>
           <Wrapper>
             <Route exact path='/' component={ Tmp }/>

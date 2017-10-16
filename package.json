@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
+    "build": "yarn run build:js",
     "build:js": "node fuse.js"
   },
   "author": "",
