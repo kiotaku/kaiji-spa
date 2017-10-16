@@ -17,6 +17,7 @@
     "fuse-box": "^2.2.31"
   },
   "dependencies": {
+    "instascan": "^1.0.0",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "react-alert": "^2.3.0",
