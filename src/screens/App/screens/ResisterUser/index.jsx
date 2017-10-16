@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import ResisterUser from './components/ResisterUser'
 

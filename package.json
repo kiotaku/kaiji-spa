@@ -19,10 +19,11 @@
   "dependencies": {
     "instascan": "^1.0.0",
     "material-ui": "^0.19.4",
-    "preact": "^8.2.5",
-    "preact-compat": "^3.17.0",
+    "react": "^16.0.0",
     "react-alert": "^2.3.0",
+    "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-tap-event-plugin": "^3.0.2"
   }
 }

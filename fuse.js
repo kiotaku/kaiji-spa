@@ -20,11 +20,7 @@ Sparky.task("build", () => {
         uglify: true
       })
     ],
-    target: 'browser',
-    alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat'
-    }
+    target: 'browser'
   })
   fuse.bundle("vendor").instructions("~ index.jsx")
   fuse.bundle("src").instructions("> [index.jsx]")

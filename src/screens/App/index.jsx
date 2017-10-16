@@ -1,15 +1,21 @@
-import { h, Component } from 'preact'
+import React, { Component } from 'react'
 import { BrowserRouter, Link, Route, Switch, withRouter } from 'react-router-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AlertContainer from 'react-alert'
 
-// import Baccarat from './screens/Baccarat'
 // import Blackjack from './screens/Blackjack'
 // import Poker from './screens/Poker'
 import ResisterUser from './screens/ResisterUser'
 // import Settings from './screens/Settings'
 import Wrapper from './components/Wrapper'
 
-const Tmp = () => (<Link to='/resister_user'>resister user</Link>)
+const Tmp = () => (
+  <div>
+    <Link to='/resister_user'>Resister User</Link>
+    <Link to='/blackjack'>Baccarat</Link>
+    <Link to='/poker'>Poker</Link>
+  </div>
+)
 
 export default class App extends Component {
   render() {
@@ -22,17 +28,16 @@ export default class App extends Component {
     }
     return (
       <BrowserRouter>
-        <AlertContainer ref={a => wimdow.alert_msg = a} {...this.alertOptions}/>
-        <div className='app'>
+        <MuiThemeProvider>
+          <AlertContainer ref={a => window.alert_msg = a} {...this.alertOptions}/>
           <Wrapper>
-            <Route exact path='/' component={ Tmp }/>
-            {/* { Baccarat } */}
+            <Route path='/' component={ Tmp }/>
             {/* { Blackjack } */}
             {/* { Poker } */}
             <ResisterUser />
             {/* { Settings } */}
           </Wrapper>
-        </div>
+        </MuiThemeProvider>
       </BrowserRouter>
     )
   }
