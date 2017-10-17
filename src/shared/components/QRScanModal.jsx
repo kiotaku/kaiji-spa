@@ -4,11 +4,11 @@ import Instascan from 'instascan'
 export default class QRScanModal extends Component {
   componentDidMount() {
     const { submitModal } = this.props
-    console.log(this.props);
     let scanner = new Instascan.Scanner({ video: this.preview })
     scanner.addListener('scan', function (content) {
       window.alert_msg.info(content)
       submitModal(content)
+      scanner.stop()
     })
     Instascan.Camera.getCameras().then(function (cameras) {
       if (cameras.length > 0) {
