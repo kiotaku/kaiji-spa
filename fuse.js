@@ -5,7 +5,7 @@ let fuse, isProduction;
 Sparky.task("build", () => {
   fuse = new FuseBox({
     homeDir: "src/",
-    sourceMaps: !isProduction,
+    sourceMaps: true,
     hash: isProduction,
     output: "build/$name.js",
     plugins: [
