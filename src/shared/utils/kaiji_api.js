@@ -6,18 +6,20 @@ class KaijiApi extends Api {
   }
 
   log(log_level, user_id, message) {
-    return this.post('/api/kaiji/log', JSON.stringify({ log_level, user_id, message }))
+    return this.post('/api/kaiji/log', { log_level, user_id, message })
   }
 
   get_user_by_id(user_id) {
-    return this.post('/api/kaiji/get_user_by_id', JSON.stringify({ user_id }))
+    return this.post('/api/kaiji/get_user_by_id', { user_id })
   }
 
-  add_user(user_id, name, isAvailable, isAnonymous) {
-    return this.post('/api/kaiji/add_user', JSON.stringify({ user_id, name, isAvailable, isAnonymous }))
+  add_user(user_id, autoAssignId, name, isAvailable, isAnonymous) {
+    return this.post('/api/kaiji/add_user', { user_id, name, isAvailable, isAnonymous })
   }
 
   modify_user(user_id, name, isAvailable, isAnonymous) {
-    return this.post('/api/kaiji/add_user', JSON.stringify({ user_id, name, isAvailable, isAnonymous }))
+    return this.post('/api/kaiji/add_user', { user_id, name, isAvailable, isAnonymous })
   }
 }
+
+export default new KaijiApi

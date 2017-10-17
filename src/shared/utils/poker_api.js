@@ -1,9 +1,10 @@
 import Api from './api'
 
-class PokerApi extends Api {
+export default class PokerApi extends Api {
   constructor(user_ids) {
+    super()
     this.user_ids = user_ids
-    this.post("/api/poker/create_new_game_room", JSON.stringify({ user_ids }))
+    this.post("/api/poker/create_new_game_room", { user_ids })
       .then(data => this.game_room_id = data.game_room_id)
   }
 
@@ -12,7 +13,7 @@ class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", JSON.stringify({ game_room_id, user_id }))
+    return this.post("/api/poker/call", { game_room_id, user_id })
   }
 
   raise(user_id, bet_points) {
@@ -20,7 +21,7 @@ class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/raise", JSON.stringify({ game_room_id, user_id, bet_points }))
+    return this.post("/api/poker/raise", { game_room_id, user_id, bet_points })
   }
 
   check(user_id) {
@@ -28,7 +29,7 @@ class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", JSON.stringify({ game_room_id, user_id }))
+    return this.post("/api/poker/call", { game_room_id, user_id })
   }
 
   fold(user_id) {
@@ -36,7 +37,7 @@ class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", JSON.stringify({ game_room_id, user_id }))
+    return this.post("/api/poker/call", { game_room_id, user_id })
   }
 
   set_winner(winner_id) {
@@ -44,11 +45,11 @@ class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", JSON.stringify({ game_room_id, winner_id }))
+    return this.post("/api/poker/call", { game_room_id, winner_id })
   }
 
   destroy_game_room() {
     const { game_room_id } = this
-    return this.post("/api/poker/destroy_game_room", JSON.stringify({ game_room_id }))
+    return this.post("/api/poker/destroy_game_room", { game_room_id })
   }
 }
