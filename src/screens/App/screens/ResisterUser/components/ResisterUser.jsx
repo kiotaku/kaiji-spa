@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatButton, Dialog, TextField, Checkbox, RaisedButton } from 'material-ui'
 
-// import KaijiApi from '~/shared/utils/kaiji_api'
+import KaijiApi from '~/shared/utils/kaiji_api'
 import QRScanModal from '~/shared/components/QRScanModal'
 
 export default class ResisterUser extends Component {
@@ -17,12 +17,15 @@ export default class ResisterUser extends Component {
 
   submit() {
     const { id, name, isAnonymous } = this.state
-    KaijiApi.add_user(id, name, true, isAnonymous)
-    this.setState({
-      id: '',
-      name: '',
-      isAnonymous: true,
-    })
+    KaijiApi.add_user(id, false, name, true, isAnonymous)
+      .then(() => {
+        window.alert_msg.info('登録されました')
+        this.setState({
+          id: '',
+          name: '',
+          isAnonymous: true,
+        })
+      })
   }
 
   openQRScanModal(e) {
@@ -55,7 +58,7 @@ export default class ResisterUser extends Component {
 
     return (
       <div className='resister_user'>
-        <div style={{position: 'relative', display: 'inline-block', width: '100%', 'margin-top': 10}}>
+        <div style={{position: 'relative', display: 'inline-block', width: '100%', 'marginTop': 10}}>
           <TextField
             name='id'
             value={this.state.id}
@@ -67,19 +70,18 @@ export default class ResisterUser extends Component {
             style={{position: 'absolute', right: 0}}/>
         </div>
         <TextField
-          style={{'margin-top': 10}}
+          style={{'marginTop': 10}}
           name='name'
           value={this.state.name}
           floatingLabelText='ユーザー名'
           fullWidth={true}
           onChange={(e) => { this.setState({ name: e.target.value }) }}/>
         <Checkbox
-          style={{'margin-top': 10}}
+          style={{'marginTop': 10}}
           label="匿名希望（ランキングに名前を表示しない）"
-          fullWidth={true}
           checked={this.state.isAnonymous}
-          onChange={(e) => { this.setState({ isAnonymous: e.target.checked }) }}/>
-        <RaisedButton style={{'margin-top': 10}} fullWidth={true} label="追加" primary={true} onClick={this.submit.bind(this)}/>
+          onClick={(e) => { this.setState({ isAnonymous: e.target.checked }) }}/>
+        <RaisedButton style={{'marginTop': 10}} fullWidth={true} label="追加" primary={true} onClick={this.submit.bind(this)}/>
         <Dialog title="QR Scan" actions={actions} modal={false} open={this.state.openQRScanModal}>
           <QRScanModal submitModal={this.submitQRScanModal.bind(this)}/>
         </Dialog>
