@@ -63,7 +63,7 @@ export default class CreateRoom extends Component {
           { this.state.users.map((user) => {
             return (
               <div key={user.userId}>
-                <ListItem primaryText={user.name} secondaryText={user.point}/>
+                <ListItem primaryText={`${user.userId}: ${user.name}`} secondaryText={user.point}/>
                 <Divider/>
               </div>
             )

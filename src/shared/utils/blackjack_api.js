@@ -21,7 +21,7 @@ export default class BlackjackApi extends Api {
 
   set_game_result(game_results) {
     const { game_room_id } = this
-    return this.post_json("/api/blackjack/set_game_result", { game_room_id, results: game_results })
+    return this.post("/api/blackjack/set_game_result", { game_room_id, results: game_results })
   }
 
   destroy_game_room() {

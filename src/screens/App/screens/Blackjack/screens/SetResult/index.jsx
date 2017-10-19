@@ -27,7 +27,7 @@ export default class SetResult extends Component {
   submitResult() {
     this.api.set_game_result(this.state.results)
       .then(() => {
-        this.api.destroy_game_room()
+        return this.api.destroy_game_room()
       })
       .then(() => {
         this.props.history.push(`${this.props.match.path.split('/').slice(0, -1).join('/')}/show_result`, {
@@ -44,7 +44,7 @@ export default class SetResult extends Component {
           { this.props.history.location.state.users.map((user) => {
             return (
               <div key={user.userId}>
-                <ListItem primaryText={user.name} secondaryText={user.point}>
+                <ListItem primaryText={`${user.userId}: ${user.name}`} secondaryText={user.point}>
                   <RadioButtonGroup
                     name={`${user.userId}-result`}
                     defaultSelected='tie'

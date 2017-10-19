@@ -34,7 +34,6 @@ export default class InGame extends Component {
       this.state.users.forEach((user) => {
         this.api.betting(user.userId, user.bet_points)
           .then((data) => {
-            console.log(data);
             if (data.result != 0) reject()
           })
           .catch(() => reject())
@@ -56,7 +55,7 @@ export default class InGame extends Component {
             return (
               <div key={user.userId}>
                 <ListItem
-                  primaryText={user.name}
+                  primaryText={`${user.userId}: ${user.name}`}
                   secondaryText={user.point}
                   rightIcon={
                     <NumberInput

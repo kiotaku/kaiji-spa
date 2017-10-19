@@ -47,7 +47,7 @@ export default class ShowResult extends Component {
           return (
             <div key={user.userId}>
               <ListItem
-                primaryText={user.name}
+                primaryText={`${user.userId}: ${user.name}`}
                 secondaryText={<span style={{ color: result_to_color[results[user.userId]] }}>{ user.point }</span>}
                 leftIcon={result_to_icon[results[user.userId]]}>
               </ListItem>
