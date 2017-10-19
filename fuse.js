@@ -3,11 +3,12 @@ const { FuseBox, SVGPlugin, CSSPlugin, BabelPlugin, QuantumPlugin, WebIndexPlugi
 let fuse, isProduction;
 
 Sparky.task("build", () => {
-  fuse = new FuseBox({
+  fuse = FuseBox.init({
     homeDir: "src/",
     sourceMaps: true,
     hash: isProduction,
     output: "build/$name.js",
+    cache: false,
     plugins: [
       SVGPlugin(),
       CSSPlugin(),
