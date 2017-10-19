@@ -4,9 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AlertContainer from 'react-alert'
 
 import Blackjack from './screens/Blackjack'
-// import Poker from './screens/Poker'
+import Poker from './screens/Poker'
 import ResisterUser from './screens/ResisterUser'
-// import Settings from './screens/Settings'
 import Wrapper from './components/Wrapper'
 
 export default class App extends Component {
@@ -25,9 +24,8 @@ export default class App extends Component {
             <AlertContainer ref={a => window.alert_msg = a} {...this.alertOptions}/>
             <Wrapper>
               <Route path='/blackjack' component={Blackjack}/>
-              {/* { Poker } */}
+              <Route path='/poker' component={Poker}/>
               <ResisterUser />
-              {/* { Settings } */}
             </Wrapper>
           </div>
         </MuiThemeProvider>

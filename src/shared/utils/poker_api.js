@@ -5,10 +5,14 @@ export default class PokerApi extends Api {
     super()
     this.user_ids = user_ids
     this.post("/api/poker/create_new_game_room", { user_ids })
-      .then(data => this.game_room_id = data.game_room_id)
+      .then(data => {
+        console.log(data);
+        this.game_room_id = data.gameRoomId
+      })
   }
 
   call(user_id) {
+    console.log(this);
     if (!this.user_ids.includes(user_id)) {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
@@ -29,7 +33,7 @@ export default class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", { game_room_id, user_id })
+    return this.post("/api/poker/check", { game_room_id, user_id })
   }
 
   fold(user_id) {
@@ -37,15 +41,15 @@ export default class PokerApi extends Api {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", { game_room_id, user_id })
+    return this.post("/api/poker/fold", { game_room_id, user_id })
   }
 
   set_winner(winner_id) {
-    if (!this.user_ids.includes(user_id)) {
+    if (!this.user_ids.includes(winner_id)) {
       return Promise.reject('user_id doesn\'t exist in user_ids.')
     }
     const { game_room_id } = this
-    return this.post("/api/poker/call", { game_room_id, winner_id })
+    return this.post("/api/poker/set_winner", { game_room_id, winner_id })
   }
 
   destroy_game_room() {
