@@ -34,7 +34,8 @@ export default class Api {
   }
 
   get(url) {
-    fetch(url, {
+    const url_base = process.env.NODE_ENV === 'production' ? process.env.API_HOST : 'http://localhost:8080'
+    fetch(url_base + url, {
       mode: 'cors'
     })
     .then(res => res.json())

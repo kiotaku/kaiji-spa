@@ -14,7 +14,7 @@ class KaijiApi extends Api {
   }
 
   add_user(user_id, autoAssignId, name, isAvailable, isAnonymous) {
-    return this.post('/api/kaiji/add_user', { user_id, name, isAvailable, isAnonymous })
+    return this.post('/api/kaiji/add_user', { user_id, autoAssignId, name, isAvailable, isAnonymous })
   }
 
   modify_user(user_id, name, isAvailable, isAnonymous) {
