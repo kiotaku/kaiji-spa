@@ -1,6 +1,6 @@
 import camelcaseKeys from 'camelcase-keys'
 
-export default PrintApi = {
+export default {
   print(user_id) {
     const magX = 1, magY = 1, font = '12x24', errorLevel = 'H', size = 'max'
     return this.get('/new_job')

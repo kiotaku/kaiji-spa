@@ -16,7 +16,7 @@ export default class InGame extends Component {
       users: props.history.location.state.users.map((user, index) => {
         return {
           ...user,
-          bet_points: 0,
+          bet_points: 100,
           raise_points: '1',
           is_fold: false,
           is_all_in: false
@@ -100,7 +100,7 @@ export default class InGame extends Component {
             if (user.userId != user_id) return user
             return {
               ...user,
-              bet_points: data.isAllIn ? user.point : this.state.max_point,
+              bet_points: data.isAllIn ? user.point : 100 + this.state.max_point,
               is_all_in: data.isAllIn
             }
           })
@@ -133,7 +133,7 @@ export default class InGame extends Component {
             if (user.userId != user_id) return user
             return {
               ...user,
-              bet_points: this.state.max_point + parseInt(raise_points),
+              bet_points: 100 + this.state.max_point + parseInt(raise_points),
               raise_points: '1'
             }
           })
@@ -173,7 +173,7 @@ export default class InGame extends Component {
             if (user.userId != user_id) return user
             return {
               ...user,
-              bet_points: user.bet_points < 200 ? 200 : user.bet_points,
+              bet_points: user.bet_points,
               is_fold: true
             }
           })
