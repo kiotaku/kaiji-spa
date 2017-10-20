@@ -5,7 +5,7 @@ let fuse, isProduction;
 Sparky.task("build", () => {
   fuse = FuseBox.init({
     homeDir: "src/",
-    sourceMaps: true,
+    sourceMaps: !isProduction,
     hash: isProduction,
     output: "build/$name.js",
     cache: false,
@@ -18,7 +18,10 @@ Sparky.task("build", () => {
       }),
       isProduction && QuantumPlugin({
         treeshake: true,
-        uglify: true
+        uglify: true,
+        removeUseStrict: false,
+        replaceProcessEnv: false,
+        target: 'browser'
       })
     ],
     target: 'browser'
@@ -36,7 +39,7 @@ Sparky.task("clean", () => Sparky.src("build/").clean("build/"))
 
 Sparky.task("prod-env", ["clean"], () => { isProduction = true })
 
-Sparky.task("prod", ["prod-env", "build"], () => {
+Sparky.task("prod", ["prod-env", "clean", "build"], () => {
   fuse.dev()
   return fuse.run()
 })
