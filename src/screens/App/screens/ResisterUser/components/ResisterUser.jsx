@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import { FlatButton, Dialog, TextField, Checkbox, RaisedButton } from 'material-ui'
 
 import KaijiApi from '~/shared/utils/kaiji_api'
+import PrintApi from '~/shared/utils/print_api'
 import QRScanModal from '~/shared/components/QRScanModal'
 
 export default class ResisterUser extends Component {
   constructor() {
     super()
     this.state = {
-      id: '',
       name: '',
       isAnonymous: true,
       openQRScanModal: false
@@ -17,7 +17,8 @@ export default class ResisterUser extends Component {
 
   submit() {
     const { id, name, isAnonymous } = this.state
-    KaijiApi.add_user(id, false, name, true, isAnonymous)
+    KaijiApi.add_user(id, true, false, name, true, isAnonymous)
+      .then((data) => PrintApi.print(data.userId))
       .then(() => {
         window.alert_msg.info('登録されました')
         this.setState({
@@ -58,7 +59,7 @@ export default class ResisterUser extends Component {
 
     return (
       <div className='resister_user'>
-        <div style={{position: 'relative', display: 'inline-block', width: '100%', 'marginTop': 10}}>
+        {/* <div style={{position: 'relative', display: 'inline-block', width: '100%', 'marginTop': 10}}>
           <TextField
             name='id'
             value={this.state.id}
@@ -68,7 +69,7 @@ export default class ResisterUser extends Component {
           <FlatButton
             label="スキャン" onClick={this.openQRScanModal.bind(this)}
             style={{position: 'absolute', right: 0}}/>
-        </div>
+        </div> */}
         <TextField
           style={{'marginTop': 10}}
           name='name'

@@ -10,7 +10,7 @@ Sparky.task("build", () => {
     output: "build/$name.js",
     cache: false,
     plugins: [
-      EnvPlugin({ NODE_ENV: isProduction ? 'production' : 'develop' , API_HOST : process.env.API_HOST }),
+      EnvPlugin({ NODE_ENV: isProduction ? 'production' : 'develop' , API_HOST : process.env.API_HOST, PRINT_API_HOST : 'http://192.168.11.4' }),
       SVGPlugin(),
       CSSPlugin(),
       BabelPlugin(),
