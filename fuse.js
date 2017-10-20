@@ -1,4 +1,4 @@
-const { FuseBox, SVGPlugin, CSSPlugin, BabelPlugin, QuantumPlugin, WebIndexPlugin, Sparky } = require('fuse-box')
+const { FuseBox, EnvPlugin, SVGPlugin, CSSPlugin, BabelPlugin, QuantumPlugin, WebIndexPlugin, Sparky } = require('fuse-box')
 
 let fuse, isProduction;
 
@@ -10,6 +10,7 @@ Sparky.task("build", () => {
     output: "build/$name.js",
     cache: false,
     plugins: [
+      EnvPlugin({ NODE_ENV: isProduction ? 'production' : 'develop' , API_HOST : process.env.API_HOST }),
       SVGPlugin(),
       CSSPlugin(),
       BabelPlugin(),

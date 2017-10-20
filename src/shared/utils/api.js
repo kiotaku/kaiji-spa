@@ -10,7 +10,7 @@ function createFormData(data) {
 
 export default class Api {
   post(url, body) {
-    const url_base = 'http://localhost:8080'
+    const url_base = process.env.NODE_ENV === 'production' ? process.env.API_HOST : 'http://localhost:8080'
     console.log(JSON.stringify(camelcaseKeys(body, { deep: true })));
     return fetch(url_base + url, {
       method: 'POST',
