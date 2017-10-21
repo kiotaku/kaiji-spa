@@ -18,7 +18,7 @@ export default class ResisterUser extends Component {
   submit() {
     const { id, name, isAnonymous } = this.state
     KaijiApi.add_user(id, true, name, true, isAnonymous)
-      .then((data) => PrintApi.print(data.userId))
+      .then((data) => PrintApi.print(data.userId, name))
       .then(() => {
         window.alert_msg.info('登録されました')
         this.setState({

@@ -1,7 +1,7 @@
 import camelcaseKeys from 'camelcase-keys'
 
 export default {
-  print(user_id) {
+  print(user_id, user_name) {
     const magX = 1, magY = 1, font = '12x24', errorLevel = 'H', size = 'max'
     return this.get('/new_job')
       .then(data => this.id = data.id)
@@ -11,7 +11,11 @@ export default {
       })
       .then(() => {
         const id = this.id
-        return this.post('/print', { id, text: '10月21日(土),22日(日)限り有効\r\r\r\r', font, magX, magY })
+        return this.post('/print', { id, text: '10月21日(土),22日(日)限り有効\r', font, magX, magY })
+      })
+      .then(() => {
+        const id = this.id
+        return this.post('/print', { id, text: `${user_name}\r\r\r\r`, font, magX, magY })
       })
       .then(() => {
         const id = this.id
