@@ -6,12 +6,16 @@ import PokerApi from '~/shared/utils/poker_api'
 import QRScanModal from '~/shared/components/QRScanModal'
 
 export default class CreateRoom extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       users: [],
       openQRScanModal: false
     }
+
+    props.history.location.state && props.history.location.state.user_ids.forEach((user_id) => {
+      this.submitQRScanModal(user_id)
+    })
   }
 
   openQRScanModal(e) {
