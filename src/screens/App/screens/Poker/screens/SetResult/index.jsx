@@ -7,7 +7,11 @@ export default class SetResult extends Component {
     this.api = props.history.location.state.poker_api
     this.fold_users = props.history.location.state.fold_users
     if (this.fold_users.length + 1 == props.history.location.state.users.length) {
-      let winner_id = props.history.location.state.users.find((user) => !this.fold_users.includes(user)).userId
+      let winner_id = props.history.location.state.users.find((user) => !this.fold_users.includes(user.userId)).userId
+      console.log("debug");
+      console.log(this.fold_users);
+      console.log(props.history.location.state.users);
+      console.log(winner_id);
       this.onClickWinner(winner_id)
     }
   }

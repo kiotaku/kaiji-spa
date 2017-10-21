@@ -40,7 +40,7 @@ export default class ShowResult extends Component {
       <List>
         { users.map((user) => {
           let status = 'lose'
-          if (user.userId == this.props.history.location.state.winner_id) status = 'win'
+          if (user.userId === this.props.history.location.state.winner_id) status = 'win'
           return (
             <div key={user.userId}>
               <ListItem

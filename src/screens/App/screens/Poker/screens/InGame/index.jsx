@@ -82,7 +82,7 @@ export default class InGame extends Component {
       this.props.history.push(`${this.props.match.path.split('/').slice(0, -1).join('/')}/set_result`, {
         poker_api: this.api,
         users: this.state.users,
-        fold_users: this.state.users.filter((user) => user.is_fold).map((user) => user.user_id)
+        fold_users: this.state.users.filter((user) => user.is_fold).map((user) => user.userId)
       })
     }
   }
@@ -173,7 +173,7 @@ export default class InGame extends Component {
             if (user.userId != user_id) return user
             return {
               ...user,
-              bet_points: user.bet_points,
+              bet_points: user.bet_points - 100,
               is_fold: true
             }
           })
@@ -194,7 +194,7 @@ export default class InGame extends Component {
             return (
               <div key={user.userId}>
                 <ListItem
-                  primaryText={`${user.userId}: ${user.name}`}
+                  primaryText={<div>{`${user.userId}: ${user.name}`}<br/>{`points: ${user.point}`}</div>}
                   secondaryText={
                       action_user == index ? <div style={{ display: 'table' }}>
                       <FlatButton
