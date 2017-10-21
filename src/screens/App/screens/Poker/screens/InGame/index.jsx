@@ -47,6 +47,9 @@ export default class InGame extends Component {
     }
     while(users[next_action_user].is_fold || users[next_action_user].is_all_in) {
       next_action_user += 1
+      if (next_action_user >= users.length) {
+        next_action_user = 0
+      }
     }
     return next_action_user
   }
@@ -96,7 +99,6 @@ export default class InGame extends Component {
         }, 0)
         this.setState({
           call_count: this.state.call_count + 1,
-          action_user: this.action_count(),
           users: this.state.users.map((user) => {
             if (user.userId != user_id) return user
             return {
@@ -105,6 +107,9 @@ export default class InGame extends Component {
               is_all_in: data.isAllIn
             }
           })
+        })
+        this.setState({
+          action_user: this.action_count()
         })
         if (this.state.call_count == current_user - 1) {
           this.phaseEnded()
