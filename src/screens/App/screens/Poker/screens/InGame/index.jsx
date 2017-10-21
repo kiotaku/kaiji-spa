@@ -96,6 +96,7 @@ export default class InGame extends Component {
         }, 0)
         this.setState({
           call_count: this.state.call_count + 1,
+          action_user: this.action_count(),
           users: this.state.users.map((user) => {
             if (user.userId != user_id) return user
             return {
@@ -194,7 +195,7 @@ export default class InGame extends Component {
             return (
               <div key={user.userId}>
                 <ListItem
-                  primaryText={<div>{`${user.userId}: ${user.name}`}<br/>{`points: ${user.point}`}</div>}
+                  primaryText={<div>{`${user.userId}: ${user.name}`}<br/><div style={{ fontSize: '14px', lineHeight: '16px', height: '16px', margin: '4px 0px 0px' }}>{`points: ${user.point}`}</div></div>}
                   secondaryText={
                       action_user == index ? <div style={{ display: 'table' }}>
                       <FlatButton
