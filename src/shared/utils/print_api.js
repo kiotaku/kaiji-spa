@@ -29,10 +29,10 @@ export default {
         const id = this.id
         return this.post('/print', { id, text: '\r\r※再発行は受け付けません。\r\r\r\r\r\r\r\r', font, magX, magY })
       })
-      // .then(() => {
-      //   const id = this.id
-      //   return this.post('/end_job', { id })
-      // })
+      .then(() => {
+        const id = this.id
+        return this.post('/end_job', { id })
+      })
   },
 
   post(url, body) {
