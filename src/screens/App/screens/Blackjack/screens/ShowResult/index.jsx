@@ -21,7 +21,7 @@ export default class ShowResult extends Component {
         }
         this.setState({
           users: this.state.users.concat(data),
-          continue: 'end'
+          continue: 'continue'
         })
       })
     })
@@ -73,7 +73,7 @@ export default class ShowResult extends Component {
                   leftIcon={result_to_icon[results[user.userId]]}>
                     <RadioButtonGroup
                       name={`${user.userId}-result`}
-                      defaultSelected='end'
+                      defaultSelected='continue'
                       onChange={this.onChangeContinue.bind(this, user.userId)}>
                       <RadioButton
                         value='end'
